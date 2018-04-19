@@ -1,4 +1,4 @@
-# Working in a group (Jason)
+# Working in a group (Jason, JP)
 
 Working in a group presents challenges from conflicting ideas to conflicting git commmits! Here are some best practices:
 
