@@ -26,7 +26,7 @@ app.set('port', process.env.PORT || 3000);
 
 app.get('/', function (req, res) {
   res.render('index');
-}) 
+})
 
 
 app.get('/albums', function (req,res) {
@@ -64,20 +64,23 @@ app.get('/albums/:id', function (req, res) {
 
 app.get('/create/album', function (req,res) {
   res.render('create/album')
-}) 
+})
 
-app.post('/albums/create', function (req, res) {
+app.post('/api/albums/', function (req, res) {
   //creating a new album with data from the input form
   var newAlbum = req.body;
+
+	console.log(req.body);
+
   db.Album.create(newAlbum, function(err, newAlbumItem) {
     if (err) {
       console.log("index error: " + err)
       res.sendStatus(500);
     } else {
       //only execute when there are no errors in the request
-      res.json(newAlbum);
+      res.redirect('/albums');
     }
-  }); 
+  });
 });
 
 

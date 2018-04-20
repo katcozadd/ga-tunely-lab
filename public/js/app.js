@@ -25,11 +25,11 @@ $(document).ready(function() {
   });
 
 
-  $('#newAlbumForm').on('click', function(e) {
+  $('#newAlbumForm').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
       method: "POST",
-      url: "/albums/:id",
+      url: "/api/albums",
       data: $(this).serialize(),
       success: newAlbumSuccess,
       error: newAlbumError
@@ -113,10 +113,8 @@ function renderAlbumError(e) {
 }
 
 
-function newAlbumSuccess(json) {
-  $('#newAlbumForm input').val('');
-  albumsArr.push(json);
-  render();
+function newAlbumSuccess() {
+  window.location.href = '/albums';
 }
 
 function newAlbumError(e) {
