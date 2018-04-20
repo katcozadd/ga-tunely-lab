@@ -17,7 +17,6 @@ $(document).ready(function() {
 	var $albumsList = $('#albums');
 	var albumsArr = [];
 
-
   $.ajax({
   	method: "GET",
   	url: '/albums',
@@ -26,10 +25,16 @@ $(document).ready(function() {
   });
 
 
-
-
-
-
+  $('#newAlbumForm').on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: "/albums/:id",
+      data: $(this).serialize(),
+      success: newAlbumSuccess,
+      error: newAlbumError
+    });
+  });
 
 function getAlbumHtml(album) {
   return `
@@ -78,15 +83,12 @@ function getAlbumHtml(album) {
         </div>
       </div>
     </div>`;
-
-
 }
 
 
 function getAllAlbumsHtml(albums) {
   return albums.map(getAlbumHtml).join("");
 }
-
 // helper function to render all posts to view
 // note: we empty and re-render the collection each time our post data changes
 function render () {
@@ -99,7 +101,6 @@ function render () {
 };
 
 
-
 function renderAlbumSuccess(json) {
 	albumsArr = json;
 	render();
@@ -110,6 +111,16 @@ function renderAlbumError(e) {
 	$('#albums').text('Failed to load albums, is the server working?');
 }
 
+
+function newAlbumSuccess(json) {
+  $('#newAlbumForm input').val('');
+  albumsArr.push(json);
+  render();
+}
+
+function newAlbumError(e) {
+  console.log("create album error, could not create!");
+}
 
 
 
