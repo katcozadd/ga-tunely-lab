@@ -13,4 +13,106 @@
 
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+	var $albumsList = $('#albums');
+	var albumsArr = [];
+
+
+  $.ajax({
+  	method: "GET",
+  	url: '/albums',
+  	success: renderAlbumSuccess,
+  	error: renderAlbumError
+  });
+
+
+
+
+
+
+
+function getAlbumHtml(album) {
+  return `
+    <div class="row album">
+
+      <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div class='row'>
+              <div class="col-md-3 col-xs-12 thumbnail album-art">
+                <img src="http://placehold.it/800x800" alt="">
+              </div>
+
+              <div class="col-md-9 col-xs-12">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Album Name:</h4>
+                    <span class='album-name'>${album.albumName}</span>
+                  </li>
+
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Artist Name:</h4>
+                    <span class='artist-name'>${album.artistName}</span>
+                  </li>
+
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Released date:</h4>
+                    <span class='album-releaseDate'>${album.releaseDate}</span>
+                  </li>
+
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Genres:</h4>
+                    <span class='album-releaseDate'>${album.genres}</span>
+                  </li>
+
+                </ul>
+              </div>
+
+            </div>
+
+            <div class='panel-footer'>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+
+}
+
+
+function getAllAlbumsHtml(albums) {
+  return albums.map(getAlbumHtml).join("");
+}
+
+// helper function to render all posts to view
+// note: we empty and re-render the collection each time our post data changes
+function render () {
+  // empty existing posts from view
+  $albumsList.empty();
+  // pass `allTodo` into the template function
+  var albumsHtml = getAllAlbumsHtml(albumsArr);
+  // append html to the view
+  $albumsList.append(albumsHtml);
+};
+
+
+
+function renderAlbumSuccess(json) {
+	albumsArr = json;
+	render();
+}
+
+function renderAlbumError(e) {
+	console.log('uh oh');
+	$('#albums').text('Failed to load albums, is the server working?');
+}
+
+
+
+
+
 });
+//------------------------------------------------
