@@ -35,6 +35,17 @@ app.get('/albums', function (req,res) {
       console.log("album error" + err);
       res.sendStatus(500);
     }
+    res.render('albums');
+  });
+});
+
+app.get('/api/albums', function (req,res) {
+  db.Album.find( function (err, allAlbums) {
+    if(err) {
+      console.log("album error" + err);
+      res.sendStatus(500);
+    }
+    console.log(allAlbums);
     res.json(allAlbums);
   });
 });
@@ -50,6 +61,10 @@ app.get('/albums/:id', function (req, res) {
     res.json(singleAlbum);
   });
 });
+
+app.get('/create/album', function (req,res) {
+  res.render('create/album')
+}) 
 
 app.post('/albums/create', function (req, res) {
   //creating a new album with data from the input form
