@@ -14,7 +14,7 @@ var db = require("./models");
 
 var sampleAlbums = [{
    artistName: 'Ladyhawke',
-   name: 'Ladyhawke',
+   albumName: 'Ladyhawke',
    releaseDate: '2008, November 18',
    genres: [ 'new wave', 'indie rock', 'synth pop' ]
  },
