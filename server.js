@@ -30,14 +30,41 @@ app.get('/', function (req, res) {
 
 
 app.get('/albums', function (req,res) {
-  db.Album.find( function (err, albums) {
+  db.Album.find( function (err, allAlbums) {
     if(err) {
       console.log("album error" + err);
       res.sendStatus(500);
     }
-    res.json(albums);
-  })
-})
+    res.json(allAlbums);
+  });
+});
+
+
+
+app.get('/albums/:id', function (req, res) {
+  db.Album.findOne({_id: req.params.id}, function (err, singleAlbum) {
+    if (err) {
+      console.log("album error" + err);
+      res.sendStatus(500);
+    }
+    res.json(singleAlbum);
+  });
+});
+
+app.post('/albums/create', function (req, res) {
+  //creating a new album with data from the input form
+  var newAlbum = req.body;
+  db.Album.create(newAlbum, function(err, newAlbumItem) {
+    if (err) {
+      console.log("index error: " + err)
+      res.sendStatus(500);
+    } else {
+      //only execute when there are no errors in the request
+      res.json(newAlbum);
+    }
+  }); 
+});
+
 
 /*
  * HTML Endpoints: This means we are expecting an HTML or EJS page to be rendered

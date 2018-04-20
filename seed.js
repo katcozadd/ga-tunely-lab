@@ -13,24 +13,28 @@
 var db = require("./models");
 
 var sampleAlbums = [{
+  albumImage: "./public/images/ladyhawke.jpg",
    artistName: 'Ladyhawke',
    albumName: 'Ladyhawke',
    releaseDate: '2008, November 18',
    genres: [ 'new wave', 'indie rock', 'synth pop' ]
  },
  {
+  albumImage: "./public/images/theknife.jpg",
    artistName: 'The Knife',
    albumName: 'Silent Shout',
    releaseDate: '2006, February 17',
    genres: [ 'synth pop', 'electronica', 'experimental' ]
  },
  {
+  albumImage: "./public/images/juno.jpg",
    artistName: 'Juno Reactor',
    albumName: 'Shango',
    releaseDate: '2000, October 9',
    genres: [ 'electronic', 'goa trance', 'tribal house' ]
  },
  {
+  albumImage: "./public/images/philip.jpg",
    artistName: 'Philip Wesley',
    albumName: 'Dark Night of the Soul',
    releaseDate: '2008, September 12',
