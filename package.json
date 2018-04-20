@@ -4,7 +4,8 @@
   "description": "An app for tracking your music collection",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,13 @@
   },
   "homepage": "https://github.com/tgaff/tunely#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "ejs": "^2.5.9",
-    "express": "^4.13.3"
+    "express": "^4.16.3",
+    "mongoose": "^5.0.15",
+    "morgan": "^1.9.0"
+  },
+  "directories": {
+    "doc": "docs"
   }
 }

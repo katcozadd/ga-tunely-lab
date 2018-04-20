@@ -1,15 +1,17 @@
-// SERVER-SIDE JAVASCRIPT
+const express    = require('express')
+const bodyParser = require('body-parser');
+const app        = express();
+const morgan     = require('morgan');
+const db         = require('./models');
+const path       = require('path');
 
-//require express in our app
-var express = require('express');
-// generate a new express app and call it 'app'
-var app = express();
+app.use(morgan('tiny'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
-// set EJS as our view engine. This allows us to make dynamic pages.
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// serve static files from public folder
-app.use(express.static(__dirname + '/public'));
+app.set('port', process.env.PORT || 3000);
 
 /************
  * DATABASE *
@@ -63,7 +65,7 @@ var albums = [{
  * HTML Endpoints: This means we are expecting an HTML or EJS page to be rendered
  */
 
-app.get('/', function homepage (req, res) {
+app.get('/*', function homepage (req, res) {
   // This albums variable is the array of objects defined above.
   // TODO: Eventually, this should be replaced with a find() call to your database!
   res.render('index', { albums: albums });
@@ -88,5 +90,6 @@ app.get('/', function homepage (req, res) {
  * SERVER *
  **********/
 
-// listen on port 3000
-app.listen(process.env.PORT || 3000);
+app.listen(app.get('port'), () => {
+    console.log(`✅ PORT: ${app.get('port')} 🌟`)
+  })
