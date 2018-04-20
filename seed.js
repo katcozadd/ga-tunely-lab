@@ -20,19 +20,19 @@ var sampleAlbums = [{
  },
  {
    artistName: 'The Knife',
-   name: 'Silent Shout',
+   albumName: 'Silent Shout',
    releaseDate: '2006, February 17',
    genres: [ 'synth pop', 'electronica', 'experimental' ]
  },
  {
    artistName: 'Juno Reactor',
-   name: 'Shango',
+   albumName: 'Shango',
    releaseDate: '2000, October 9',
    genres: [ 'electronic', 'goa trance', 'tribal house' ]
  },
  {
    artistName: 'Philip Wesley',
-   name: 'Dark Night of the Soul',
+   albumName: 'Dark Night of the Soul',
    releaseDate: '2008, September 12',
    genres: [ 'piano' ]
  }];
