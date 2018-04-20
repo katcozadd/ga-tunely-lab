@@ -19,7 +19,7 @@ $(document).ready(function() {
 
   $.ajax({
   	method: "GET",
-  	url: '/albums',
+  	url: '/api/albums',
   	success: renderAlbumSuccess,
   	error: renderAlbumError
   });
@@ -103,6 +103,7 @@ function render () {
 
 function renderAlbumSuccess(json) {
 	albumsArr = json;
+	console.log(albumsArr);
 	render();
 }
 
