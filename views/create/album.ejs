@@ -1,0 +1,69 @@
+<% include partials/header %>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<h2>Create Album</h2>
+	</div>
+</div>
+
+<!-- BEGIN FORM SAMPLE -->
+
+<section id='albumForm' class="container">
+	<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+
+		<form class="form-horizontal">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Add New Album</legend>
+
+				<!-- Text input-->
+				<div id="newAlbumForm" class="form-group">
+					<label class="col-md-4 control-label" for="name">Album Name</label>
+					<div class="col-md-4">
+						<input id="albumName" name="albumName" type="text" placeholder="" class="form-control input-md" required="">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="artistName">Artist Name</label>
+					<div class="col-md-4">
+						<input id="artistName" name="artistName" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="releaseDate">Release Date</label>
+					<div class="col-md-4">
+					<input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md">
+
+					</div>
+				</div>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="genres">Genres (Separate with a coma. I.e. rock, pop, hip hop,)</label>
+					<div class="col-md-4">
+						<textarea class="form-control" id="genres" name="genres"></textarea>
+					</div>
+				</div>
+
+
+				<!-- Button -->
+				<div class="form-group">
+					<div class="col-md-4">
+						<button id="singlebutton" name="singlebutton" class="btn btn-primary">Save Album</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	</div>
+</section>
+
+ <!--   END FORM SAMPLE -->
+
+<% include partials/footer %>
