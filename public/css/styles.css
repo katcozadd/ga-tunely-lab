@@ -1,3 +1,9 @@
+/* accommodates the fixed navbar */
+body {
+	padding-bottom: 70px;
+}
+
+
 .jumbotron {
   background-image: url(/images/background1.jpg);
   background-size: cover;
@@ -13,4 +19,3 @@
   vertical-align: baseline;
   margin-right: 12px;
 }
-
